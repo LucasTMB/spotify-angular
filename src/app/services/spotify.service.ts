@@ -16,4 +16,13 @@ export class SpotifyService {
     const responseType = `response_type=token&show_dialog=true`;
     return authEndpoint + clientId + redirectUrl + scopes + responseType; 
   }
+
+  obterTokenUrlCallback() {
+    if (!window.location.hash)
+      return '';
+
+    const params = window.location.href.substring(1).split('&');
+    
+    return params[0].split('=')[1];
+  }
 }
